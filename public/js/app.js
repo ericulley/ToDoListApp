@@ -1,19 +1,21 @@
-
 class Create extends React.Component {
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.props.handleSubmit}>
                     <label htmlFor="name">Name</label>
-                    <input id="name" type="text" onChange={this.handleChange} value={this.state.name}/>
+                    <input id="name" type="text" onChange={this.props.handleChange} value={this.props.state.name}/>
                     <br/>
                     <label htmlFor="date">Date</label>
-                    <input id="date" type="text" onChange={this.handleChange} value={this.state.date}/>
+                    <input id="date" type="date" onChange={this.props.handleChange} value={this.props.state.date}/>
                     <br/>
                     <label htmlFor="description">Description</label>
-                    <textarea id="description" type="text" onChange={this.handleChange} value={this.state.description}></textarea>
+                    <textarea id="description" type="text" onChange={this.props.handleChange} value={this.props.state.description}></textarea>
                     <br/>
-                    <input type="submit"/>
+                    <label htmlFor="completed">Completed</label>
+                    <input id="completed" type="checkbox" onChange={this.props.handleCheck} value={this.props.state.completed}/>
+                    <br/>
+                    <input type="submit" value="New ToDo"/>
                 </form>
             </div>
         )
@@ -66,7 +68,9 @@ class App extends React.Component {
             description: "",
             date: "",
             completed: false
-        }))
+        }),
+        document.getElementById('completed').checked = false
+        )
     }
     deleteTodo = event => {
         axios.delete("/todo/" + this.state).then(response => {
@@ -78,7 +82,7 @@ class App extends React.Component {
     updateTodo = event => {
         event.preventDefault();
         const id = event.target.id;
-        axios.put("/animals/" + id, this.state).then(response => {
+        axios.put("/todo/" + id, this.state).then(response => {
             this.setState({
                 todos: response.data,
                 name: "",
@@ -94,7 +98,7 @@ class App extends React.Component {
     }
     render = () => {
         return <div id="react-container">
-            <Create></Create>
+            <Create state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit}></Create>
         </div>
     }
 }
