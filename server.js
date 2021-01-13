@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -33,7 +32,3 @@ mongoose.connection.on('connected', () =>
     console.log('mongo connected: ', MONGODB_URI)
 )
 mongoose.connection.on('disconnected', () => console.log('mongo disconnected'))
-=======
-console.log("hello")
-console.log("Bye Bye")
->>>>>>> d8c43a45a13c3a360bf3fed5aaf562786b4b8567
