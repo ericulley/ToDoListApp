@@ -45,9 +45,24 @@ class Show extends React.Component {
 class Edit extends React.Component {
     render() {
         return (
-            <div>
-
-            </div>
+            <details>
+                <summary>Edit ToDo</summary>
+                <form id={todo._id} onSubmit={this.props.updateTodo}>
+                    <label htmlFor="edit-name">Name</label>
+                    <input id="edit-name" type="text" onChange={this.props.handleChange} defaultValue={todo.name} />
+                    <br />
+                    <label htmlFor="edit-date">Date</label>
+                    <input id="edit-date" type="date" onChange={this.props.handleChange} defaultValue={todo.date} />
+                    <br />
+                    <label htmlFor="edit-description">Description</label>
+                    <textarea id="edit-description" type="text" onChange={this.props.handleChange} defaultValue={todo.description}></textarea>
+                    <br />
+                    <label htmlFor="edit-completed">Completed</label>
+                    <input id="edit-completed" type="checkbox" onChange={this.props.handleCheck} defaultValue={todo.completed} />
+                    <br />
+                    <input id="edit-todo-button" type="button" value="Edit ToDo" />
+                </form>
+            </details>
         )
     }
 }
