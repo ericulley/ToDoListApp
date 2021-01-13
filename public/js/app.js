@@ -1,3 +1,4 @@
+
 class App extends React.Component {
     state = {
 
@@ -6,7 +7,7 @@ class App extends React.Component {
         return <div id="react-container">
             <h1>React ToDo</h1>
 
-
+            <Name />
         </div>
     }
 }
