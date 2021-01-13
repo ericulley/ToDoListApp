@@ -1,19 +1,20 @@
 class Create extends React.Component {
+
     render() {
         return (
             <div>
                 <form onSubmit={this.props.handleSubmit}>
                     <label htmlFor="name">Name</label>
-                    <input id="name" type="text" onChange={this.props.handleChange} value={this.props.state.name} />
+                    <input id="name" type="text" onChange={this.props.handleChange} />
                     <br />
                     <label htmlFor="date">Date</label>
-                    <input id="date" type="date" onChange={this.props.handleChange} value={this.props.state.date} />
+                    <input id="date" type="date" onChange={this.props.handleChange} />
                     <br />
                     <label htmlFor="description">Description</label>
-                    <textarea id="description" type="text" onChange={this.props.handleChange} value={this.props.state.description}></textarea>
+                    <textarea id="description" type="text" onChange={this.props.handleChange} ></textarea>
                     <br />
                     <label htmlFor="completed">Completed</label>
-                    <input id="completed" type="checkbox" onChange={this.props.handleCheck} value={this.props.state.completed} />
+                    <input id="completed" type="checkbox" onChange={this.props.handleCheck} />
                     <br />
                     <input type="submit" value="New ToDo" />
                 </form>
@@ -60,7 +61,7 @@ class Edit extends React.Component {
                     <label htmlFor="edit-completed">Completed</label>
                     <input id="edit-completed" type="checkbox" onChange={this.props.handleCheck} defaultValue={todo.completed} />
                     <br />
-                    <input id="edit-todo-button" type="button" value="Edit ToDo" />
+                    <input id="edit-todo-button" type="submit" value="Edit ToDo" />
                 </form>
             </details>
         )
@@ -94,7 +95,8 @@ class App extends React.Component {
             date: "",
             completed: false
         }),
-            document.getElementById('completed').checked = false
+            document.getElementById('completed').checked = false,
+            document.getElementById('name').value = ""
         )
     }
     deleteTodo = event => {
