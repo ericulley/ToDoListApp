@@ -1,23 +1,21 @@
 class Create extends React.Component {
     render() {
         return (
-            <div>
-                <form onSubmit={this.props.handleSubmit}>
-                    <label htmlFor="name">Name</label>
-                    <input id="name" type="text" onChange={this.props.handleChange} value={this.props.state.name}/>
-                    <br/>
-                    <label htmlFor="date">Date</label>
-                    <input id="date" type="date" onChange={this.props.handleChange} value={this.props.state.date}/>
-                    <br/>
-                    <label htmlFor="description">Description</label>
-                    <textarea id="description" type="text" onChange={this.props.handleChange} value={this.props.state.description}></textarea>
-                    <br/>
-                    <label htmlFor="completed">Completed</label>
-                    <input id="completed" type="checkbox" onChange={this.props.handleCheck} value={this.props.state.completed}/>
-                    <br/>
-                    <input type="submit" value="New ToDo"/>
-                </form>
-            </div>
+            <form onSubmit={this.props.handleSubmit}>
+                <label htmlFor="name">Name</label>
+                <input id="name" type="text" onChange={this.props.handleChange} value={this.props.state.name}/>
+                <br/>
+                <label htmlFor="date">Date</label>
+                <input id="date" type="date" onChange={this.props.handleChange} value={this.props.state.date}/>
+                <br/>
+                <label htmlFor="description">Description</label>
+                <textarea id="description" type="text" onChange={this.props.handleChange} value={this.props.state.description}></textarea>
+                <br/>
+                <label htmlFor="completed">Completed</label>
+                <input id="completed" type="checkbox" onChange={this.props.handleCheck} value={this.props.state.completed}/>
+                <br/>
+                <input type="submit" value="New ToDo"/>
+            </form>
         )
     }
 }
@@ -35,9 +33,24 @@ class Show extends React.Component {
 class Edit extends React.Component {
     render() {
         return (
-            <div>
-
-            </div>
+            <details>
+                <summary>Edit ToDo</summary>
+                <form id={todo._id} onSubmit={this.props.updateTodo}>
+                    <label htmlFor="edit-name">Name</label>
+                    <input id="edit-name" type="text" onChange={this.props.handleChange} defaultValue={todo.name}/>
+                    <br/>
+                    <label htmlFor="edit-date">Date</label>
+                    <input id="edit-date" type="date" onChange={this.props.handleChange} defaultValue={todo.date}/>
+                    <br/>
+                    <label htmlFor="edit-description">Description</label>
+                    <textarea id="edit-description" type="text" onChange={this.props.handleChange} defaultValue={todo.description}></textarea>
+                    <br/>
+                    <label htmlFor="edit-completed">Completed</label>
+                    <input id="edit-completed" type="checkbox" onChange={this.props.handleCheck} defaultValue={todo.completed}/>
+                    <br/>
+                    <input id="edit-todo-button" type="button" value="Edit ToDo"/>
+                </form>
+            </details>
         )
     }
 }
