@@ -1,6 +1,6 @@
 const express = require("express");
 const todos = express.Router();
-const Todo = require("../models/animals.js");
+const Todo = require("../models/list_model.js");
 
 todos.get("/", (req, res) => {
     Todo.find({}, (err, found) => {
