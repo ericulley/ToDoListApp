@@ -1,6 +1,6 @@
 class App extends React.Component {
     state = {
-        
+
     }
     render = () => {
         return <div id="react-container">
@@ -12,4 +12,6 @@ class App extends React.Component {
 }
 
 
-ReactDOM.render(<App></App>, document.querySelector('.body-container'))
+ReactDOM.render(
+    <App></App>,
+    document.querySelector('.body-container'))
