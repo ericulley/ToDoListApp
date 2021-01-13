@@ -1,3 +1,4 @@
+
 class Create extends React.Component {
     render() {
         return (
@@ -28,18 +29,17 @@ class Edit extends React.Component {
     }
 }
 
-
 class App extends React.Component {
     state = {
     }
     render = () => {
         return <div id="react-container">
-            <h1>React ToDo</h1>
-
 
         </div>
     }
 }
 
 
-ReactDOM.render(<App></App>, document.querySelector('.body-container'))
+ReactDOM.render(
+    <App></App>,
+    document.querySelector('main'))
