@@ -67,7 +67,7 @@ class App extends React.Component {
     updateTodo = event => {
         event.preventDefault();
         const id = event.target.id;
-        axios.put("/animals/" + id, this.state).then(response => {
+        axios.put("/todo/" + id, this.state).then(response => {
             this.setState({
                 todos: response.data,
                 name: "",
