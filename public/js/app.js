@@ -4,18 +4,18 @@ class Create extends React.Component {
             <div>
                 <form onSubmit={this.props.handleSubmit}>
                     <label htmlFor="name">Name</label>
-                    <input id="name" type="text" onChange={this.props.handleChange} value={this.props.state.name}/>
-                    <br/>
+                    <input id="name" type="text" onChange={this.props.handleChange} value={this.props.state.name} />
+                    <br />
                     <label htmlFor="date">Date</label>
-                    <input id="date" type="date" onChange={this.props.handleChange} value={this.props.state.date}/>
-                    <br/>
+                    <input id="date" type="date" onChange={this.props.handleChange} value={this.props.state.date} />
+                    <br />
                     <label htmlFor="description">Description</label>
                     <textarea id="description" type="text" onChange={this.props.handleChange} value={this.props.state.description}></textarea>
-                    <br/>
+                    <br />
                     <label htmlFor="completed">Completed</label>
-                    <input id="completed" type="checkbox" onChange={this.props.handleCheck} value={this.props.state.completed}/>
-                    <br/>
-                    <input type="submit" value="New ToDo"/>
+                    <input id="completed" type="checkbox" onChange={this.props.handleCheck} value={this.props.state.completed} />
+                    <br />
+                    <input type="submit" value="New ToDo" />
                 </form>
             </div>
         )
@@ -24,9 +24,19 @@ class Create extends React.Component {
 
 class Show extends React.Component {
     render() {
+        const { todos } = this.props.state;
         return (
             <div>
-
+                {todos.map(todo => {
+                    return (
+                        <div>
+                            <div>Name: {todo.name}</div>
+                            <div>Description: {todo.description}</div>
+                            <div>Date: {todo.date}</div>
+                            <div>Completed? {todo.completed ? "Yes" : "No"}</div> <br />
+                        </div>
+                    )
+                })}
             </div>
         )
     }
@@ -69,7 +79,7 @@ class App extends React.Component {
             date: "",
             completed: false
         }),
-        document.getElementById('completed').checked = false
+            document.getElementById('completed').checked = false
         )
     }
     deleteTodo = event => {
@@ -99,6 +109,7 @@ class App extends React.Component {
     render = () => {
         return <div id="react-container">
             <Create state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit}></Create>
+            <Show state={this.state} />
         </div>
     }
 }
