@@ -13,4 +13,6 @@ class App extends React.Component {
 }
 
 
-ReactDOM.render(<App></App>, document.querySelector('.body-container'))
+ReactDOM.render(
+    <App></App>,
+    document.querySelector('.body-container'))
