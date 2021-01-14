@@ -126,8 +126,8 @@ class App extends React.Component {
                 description: "",
                 completed: false
             })
-            document.querySelector('details').open = false
         })
+        document.querySelector('details').open = false
     }
     componentDidMount = () => {
         axios.get("/todo").then(response => {
