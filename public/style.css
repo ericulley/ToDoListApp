@@ -5,6 +5,7 @@
 
 body {
     background-color: #eee;
+    text-align: center;
 }
 
 /* Header */
@@ -23,4 +24,58 @@ h1 {
 
 img {
     width: 10%;
+}
+
+/* Create Todo */
+#create-container {
+    background-color: ghostwhite;
+    height: auto;
+    width: 33%;
+    margin: 0 auto;
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+    border-radius: .5em;
+}
+
+#create-container input, textarea {
+    width: 80%;
+}
+
+/* Display Todos */
+#show-container {
+    background-color: ghostwhite;
+    height: auto;
+    width: 90%;
+    margin: .5em auto;
+    padding: 1em;
+    border-radius: .5em;
+}
+
+#show-labels-container {
+    padding: .5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.show-label {
+    width: 20%;
+}
+
+.name {
+    text-align: left;
+}
+
+.edit {
+    text-align: right;
+}
+
+.todo-container {
+    padding: .5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-item {
+    width: 20%;
 }
