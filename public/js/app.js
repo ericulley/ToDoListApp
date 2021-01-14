@@ -4,19 +4,14 @@ class Create extends React.Component {
             <div id="create-container">
                 <h2>New Todo</h2>
                 <form onSubmit={this.props.handleSubmit}>
-                    <label htmlFor="name">Name</label>
+                    <h4 htmlFor="name">Name</h4>
                     <input id="name" type="text" onChange={this.props.handleChange} />
-                    <br />
-                    <label htmlFor="date">Date</label>
+                    <h4 htmlFor="date">Date</h4>
                     <input id="date" type="date" onChange={this.props.handleChange} />
-                    <br />
-                    <label htmlFor="description">Description</label>
+                    <h4 htmlFor="description">Description</h4>
                     <textarea id="description" type="text" onChange={this.props.handleChange} ></textarea>
-                    <br />
-                    <label htmlFor="completed">Completed</label>
+                    <h4 htmlFor="completed">Completed</h4>
                     <input id="completed" type="checkbox" onChange={this.props.handleCheck} />
-
-                    <br />
                     <input type="submit" value="New ToDo" />
                 </form>
             </div>
