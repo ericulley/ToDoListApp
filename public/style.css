@@ -62,14 +62,6 @@ img {
     width: 20%;
 }
 
-.name {
-    text-align: left;
-}
-
-.edit {
-    text-align: right;
-}
-
 .todo-container {
     padding: .5em;
     display: flex;
@@ -78,4 +70,63 @@ img {
 
 .todo-item {
     width: 20%;
+}
+
+.name {
+    text-align: left;
+    width: 15%;
+}
+
+.description {
+    width: 30%;
+}
+
+.edit {
+    text-align: right;
+}
+
+.date, .completed {
+    width: 10%;
+}
+
+/* Edit */
+*:focus {
+    outline: none;
+}
+
+details>summary {
+    cursor: pointer;
+}
+
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: ghostwhite;
+    padding: .5em;
+}
+
+details>form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+details label {
+    text-align: left;
+}
+
+details input, details textarea {
+    width: 100%;
+}
+
+#edit-todo-button, #delete-button {
+    cursor: pointer;
+}
+
+#delete-button {
+    background-color: rgba(255, 0, 0, 0.5);
+    margin-top: .5em;
 }
