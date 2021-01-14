@@ -65,7 +65,7 @@ class Edit extends React.Component {
                     <textarea id="description" className="edit-item" type="text" onChange={this.props.handleChange} defaultValue={this.props.todo.description}></textarea>
                     <br />
                     <label htmlFor="completed">Completed</label>
-                    <input id="completed" className="edit-item" type="checkbox" onChange={this.props.handleCheck} defaultValue={this.props.todo.completed} />
+                    <input id="completed" className="edit-item" type="checkbox" onChange={this.props.handleCheck} checked={this.props.todo.completed} />
                     <br />
                     <input id="edit-todo-button" className="edit-item" type="submit" value="Edit ToDo" />
                     <button id="delete-button" className="edit-item" type="button" onClick={this.props.deleteTodo} value={this.props.todo._id}>DELETE</button>
