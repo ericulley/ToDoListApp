@@ -1,3 +1,5 @@
+// const { response } = require("express");
+
 class Create extends React.Component {
     render() {
         return (
@@ -44,7 +46,7 @@ class Show extends React.Component {
                             <div style={this.changeStyle(todo)} className="todo-item date">{todo.date}</div>
                             <div className="todo-item completed">{todo.completed ? "Yes" : "No"}</div>
                             <div className="todo-item edit">
-                                <Edit todo={todo} handleChange={this.props.handleChange} handleCheck={this.props.handleCheck} handleSubmit={this.props.handleSubmit} updateTodo={this.props.updateTodo} deleteTodo={this.props.deleteTodo}></Edit>
+                                <Edit todo={todo} handleChange={this.props.handleChange} handleCheck={this.props.handleCheck} handleSubmit={this.props.handleSubmit} updateTodo={this.props.updateTodo} deleteTodo={this.props.deleteTodo} updateList={this.props.updateList}></Edit>
                             </div>
                         </div>
                     )
@@ -57,7 +59,8 @@ class Show extends React.Component {
 class Edit extends React.Component {
     updateTodoLocal = (event) => {
         const id = event.target.id;
-        axios.put("/todo/" + id, this.props.todo).then(response)
+        axios.put("/todo/" + id, this.props.todo).then(response => { });
+        this.props.updateList();
     }
     handleChangeLocal = event => {
         let currentProp = this.props.todo;
@@ -101,6 +104,11 @@ class App extends React.Component {
         date: "",
         completed: false,
         todos: []
+    }
+    updateList = () => {
+        axios.get("/todo").then(response => this.setState({
+            todos: response.data
+        }))
     }
     handleChange = event => {
         this.setState({
@@ -156,7 +164,7 @@ class App extends React.Component {
     render = () => {
         return <div id="react-container">
             <Create state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit}></Create>
-            <Show state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
+            <Show state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} updateList={this.updateList} />
         </div>
     }
 }
