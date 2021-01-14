@@ -20,6 +20,11 @@ class Create extends React.Component {
 }
 
 class Show extends React.Component {
+    changeStyle = (todo) => {
+        return {
+            textDecoration: todo.completed ? "line-through" : "none"
+        }
+    }
     render() {
         const { todos } = this.props.state;
         return (
@@ -34,9 +39,9 @@ class Show extends React.Component {
                 {todos.map(todo => {
                     return (
                         <div key={todo._id} className="todo-container">
-                            <div className="todo-item name">{todo.name}</div>
-                            <div className="todo-item description">{todo.description}</div>
-                            <div className="todo-item date">{todo.date}</div>
+                            <div style={this.changeStyle(todo)} className="todo-item name">{todo.name}</div>
+                            <div style={this.changeStyle(todo)} className="todo-item description">{todo.description}</div>
+                            <div style={this.changeStyle(todo)} className="todo-item date">{todo.date}</div>
                             <div className="todo-item completed">{todo.completed ? "Yes" : "No"}</div>
                             <div className="todo-item edit">
                                 <Edit todo={todo} handleChange={this.props.handleChange} handleCheck={this.props.handleCheck} handleSubmit={this.props.handleSubmit} updateTodo={this.props.updateTodo} deleteTodo={this.props.deleteTodo}></Edit>
@@ -103,7 +108,9 @@ class App extends React.Component {
             completed: false
         }),
             document.getElementById('completed').checked = false,
-            document.getElementById('name').value = ""
+            document.getElementById('name').value = "",
+            document.getElementById("date").value = "",
+            document.getElementById("description").value = ""
         )
     }
     deleteTodo = event => {
