@@ -1,20 +1,22 @@
 class Create extends React.Component {
+
     render() {
         return (
             <div id="create-container">
                 <h2>New Todo</h2>
                 <form onSubmit={this.props.handleSubmit}>
-                    <h4 htmlFor="name">Name</h4>
-                    <input id="name" type="text" onChange={this.props.handleChange}/>
+                    <label htmlFor="name">Name</label>
+                    <input id="name" type="text" onChange={this.props.handleChange} />
                     <br />
-                    <h4 htmlFor="date">Date</h4>
-                    <input id="date" type="date" onChange={this.props.handleChange}/>
+                    <label htmlFor="date">Date</label>
+                    <input id="date" type="date" onChange={this.props.handleChange} />
                     <br />
-                    <h4 htmlFor="description">Description</h4>
-                    <textarea id="description" type="text" onChange={this.props.handleChange}></textarea>
+                    <label htmlFor="description">Description</label>
+                    <textarea id="description" type="text" onChange={this.props.handleChange} ></textarea>
                     <br />
-                    <h4 htmlFor="completed">Completed</h4>
-                    <input id="completed" type="checkbox" onChange={this.props.handleCheck}/>
+                    <label htmlFor="completed">Completed</label>
+                    <input id="completed" type="checkbox" onChange={this.props.handleCheck} />
+
                     <br />
                     <input type="submit" value="New ToDo" />
                 </form>
@@ -106,7 +108,8 @@ class App extends React.Component {
             date: "",
             completed: false
         }),
-            document.getElementById('completed').checked = false
+            document.getElementById('completed').checked = false,
+            document.getElementById('name').value = ""
         )
     }
     deleteTodo = event => {
@@ -127,7 +130,7 @@ class App extends React.Component {
                 completed: false
             })
         })
-        document.querySelector('details').open = false
+
     }
     componentDidMount = () => {
         axios.get("/todo").then(response => {
@@ -137,11 +140,16 @@ class App extends React.Component {
     render = () => {
         return <div id="react-container">
             <Create state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit}></Create>
-            <Show state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo}/>
+            <Show state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit} updateTodo={this.updateTodo} />
         </div>
     }
 }
 
+$(() => {
+    $("body").on("click", "#edit-todo-button", function () {
+        $("details").removeAttr("open");
+    })
+})
 
 ReactDOM.render(
     <App></App>,
