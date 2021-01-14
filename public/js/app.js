@@ -1,5 +1,4 @@
 class Create extends React.Component {
-
     render() {
         return (
             <div id="create-container">
