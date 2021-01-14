@@ -140,7 +140,7 @@ class App extends React.Component {
     render = () => {
         return <div id="react-container">
             <Create state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit}></Create>
-            <Show state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit} updateTodo={this.updateTodo} />
+            <Show state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
         </div>
     }
 }
