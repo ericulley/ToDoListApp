@@ -115,10 +115,18 @@ details>form {
 }
 
 details label {
-
     text-align: left;
 }
 
 details input, details textarea {
     width: 100%;
+}
+
+#edit-todo-button, #delete-button {
+    cursor: pointer;
+}
+
+#delete-button {
+    background-color: rgba(255, 0, 0, 0.5);
+    margin-top: .5em;
 }

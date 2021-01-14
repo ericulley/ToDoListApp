@@ -37,13 +37,13 @@ class Show extends React.Component {
                 </div>
                 {todos.map(todo => {
                     return (
-                        <div className="todo-container">
+                        <div key={todo._id} className="todo-container">
                             <div className="todo-item name">{todo.name}</div>
                             <div className="todo-item description">{todo.description}</div>
                             <div className="todo-item date">{todo.date}</div>
                             <div className="todo-item completed">{todo.completed ? "Yes" : "No"}</div>
                             <div className="todo-item edit">
-                                <Edit todo={todo} handleChange={this.props.handleChange} handleCheck={this.props.handleCheck} handleSubmit={this.props.handleSubmit} updateTodo={this.props.updateTodo}></Edit>
+                                <Edit todo={todo} handleChange={this.props.handleChange} handleCheck={this.props.handleCheck} handleSubmit={this.props.handleSubmit} updateTodo={this.props.updateTodo} deleteTodo={this.props.deleteTodo}></Edit>
                             </div>
                         </div>
                     )
@@ -72,6 +72,7 @@ class Edit extends React.Component {
                     <input id="completed" className="edit-item" type="checkbox" onChange={this.props.handleCheck} defaultValue={this.props.todo.completed} />
                     <br />
                     <input id="edit-todo-button" className="edit-item" type="submit" value="Edit ToDo" />
+                    <button id="delete-button" className="edit-item" type="button" onClick={this.props.deleteTodo} value={this.props.todo._id}>DELETE</button>
                 </form>
             </details>
         )
@@ -109,7 +110,7 @@ class App extends React.Component {
         )
     }
     deleteTodo = event => {
-        axios.delete("/todo/" + this.state).then(response => {
+        axios.delete("/todo/" + event.target.value).then(response => {
             this.setState({
                 todos: response.data
             })
@@ -136,7 +137,7 @@ class App extends React.Component {
     render = () => {
         return <div id="react-container">
             <Create state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit}></Create>
-            <Show state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit} updateTodo={this.updateTodo}/>
+            <Show state={this.state} handleChange={this.handleChange} handleCheck={this.handleCheck} handleSubmit={this.handleSubmit} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo}/>
         </div>
     }
 }
