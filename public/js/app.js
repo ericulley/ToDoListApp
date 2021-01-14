@@ -149,6 +149,9 @@ $(() => {
     $("body").on("click", "#edit-todo-button", function () {
         $("details").removeAttr("open");
     })
+    // $("body").on("click", "#delete-button", function () {
+    //     $("details").removeAttr("open");
+    // })
 })
 
 ReactDOM.render(
