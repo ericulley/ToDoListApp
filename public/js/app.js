@@ -55,22 +55,36 @@ class Show extends React.Component {
 }
 
 class Edit extends React.Component {
+    updateTodoLocal = (event) => {
+        const id = event.target.id;
+        axios.put("/todo/" + id, this.props.todo).then(response)
+    }
+    handleChangeLocal = event => {
+        let currentProp = this.props.todo;
+        let id = event.target.id;
+        currentProp[id] = event.target.value;
+    }
+    handleCheckLocal = event => {
+        let currentProp = this.props.todo;
+        let id = event.target.id;
+        currentProp[id] = event.target.checked;
+    }
     render() {
         return (
             <details>
                 <summary>Edit</summary>
-                <form id={this.props.todo._id} onSubmit={this.props.updateTodo}>
+                <form id={this.props.todo._id} onSubmit={this.updateTodoLocal}>
                     <label htmlFor="name">Name</label>
-                    <input id="name" type="text" className="edit-item" onChange={this.props.handleChange} defaultValue={this.props.todo.name} />
+                    <input id="name" type="text" className="edit-item" onChange={this.handleChangeLocal} defaultValue={this.props.todo.name} />
                     <br />
                     <label htmlFor="date">Date</label>
-                    <input id="date" type="date" className="edit-item" onChange={this.props.handleChange} defaultValue={this.props.todo.date} />
+                    <input id="date" type="date" className="edit-item" onChange={this.handleChangeLocal} defaultValue={this.props.todo.date} />
                     <br />
                     <label htmlFor="description">Description</label>
-                    <textarea id="description" className="edit-item" type="text" onChange={this.props.handleChange} defaultValue={this.props.todo.description}></textarea>
+                    <textarea id="description" className="edit-item" type="text" onChange={this.handleChangeLocal} defaultValue={this.props.todo.description}></textarea>
                     <br />
                     <label htmlFor="completed">Completed</label>
-                    <input id="completed" className="edit-item" type="checkbox" onChange={this.props.handleCheck} checked={this.props.todo.completed} />
+                    <input id="completed" className="edit-item" type="checkbox" onChange={this.handleCheckLocal} defaultChecked={this.props.todo.completed} />
                     <br />
                     <input id="edit-todo-button" className="edit-item" type="submit" value="Edit ToDo" />
                     <button id="delete-button" className="edit-item" type="button" onClick={this.props.deleteTodo} value={this.props.todo._id}>DELETE</button>
@@ -133,6 +147,7 @@ class App extends React.Component {
         })
 
     }
+
     componentDidMount = () => {
         axios.get("/todo").then(response => {
             this.setState({ todos: response.data })
