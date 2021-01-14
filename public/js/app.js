@@ -30,18 +30,18 @@ class Show extends React.Component {
             <div id="show-container">
                 <div id="show-labels-container">
                     <h4 className="show-label name">Name</h4>
-                    <h4 className="show-label">Description</h4>
-                    <h4 className="show-label">Date</h4>
-                    <h4 className="show-label">Completed</h4>
+                    <h4 className="show-label description">Description</h4>
+                    <h4 className="show-label date">Date</h4>
+                    <h4 className="show-label completed">Completed</h4>
                     <h4 className="show-label edit">Edit</h4>
                 </div>
                 {todos.map(todo => {
                     return (
                         <div className="todo-container">
                             <div className="todo-item name">{todo.name}</div>
-                            <div className="todo-item">{todo.description}</div>
-                            <div className="todo-item">{todo.date}</div>
-                            <div className="todo-item">{todo.completed ? "Yes" : "No"}</div>
+                            <div className="todo-item description">{todo.description}</div>
+                            <div className="todo-item date">{todo.date}</div>
+                            <div className="todo-item completed">{todo.completed ? "Yes" : "No"}</div>
                             <div className="todo-item edit">
                                 <Edit todo={todo} handleChange={this.props.handleChange} handleCheck={this.props.handleCheck} handleSubmit={this.props.handleSubmit} updateTodo={this.props.updateTodo}></Edit>
                             </div>
@@ -60,18 +60,18 @@ class Edit extends React.Component {
                 <summary>Edit</summary>
                 <form id={this.props.todo._id} onSubmit={this.props.updateTodo}>
                     <label htmlFor="name">Name</label>
-                    <input id="name" type="text" onChange={this.props.handleChange} defaultValue={this.props.todo.name} />
+                    <input id="name" type="text" className="edit-item" onChange={this.props.handleChange} defaultValue={this.props.todo.name} />
                     <br />
                     <label htmlFor="date">Date</label>
-                    <input id="date" type="date" onChange={this.props.handleChange} defaultValue={this.props.todo.date} />
+                    <input id="date" type="date" className="edit-item" onChange={this.props.handleChange} defaultValue={this.props.todo.date} />
                     <br />
                     <label htmlFor="description">Description</label>
-                    <textarea id="description" type="text" onChange={this.props.handleChange} defaultValue={this.props.todo.description}></textarea>
+                    <textarea id="description" className="edit-item" type="text" onChange={this.props.handleChange} defaultValue={this.props.todo.description}></textarea>
                     <br />
                     <label htmlFor="completed">Completed</label>
-                    <input id="completed" type="checkbox" onChange={this.props.handleCheck} defaultValue={this.props.todo.completed} />
+                    <input id="completed" className="edit-item" type="checkbox" onChange={this.props.handleCheck} defaultValue={this.props.todo.completed} />
                     <br />
-                    <input id="edit-todo-button" type="submit" value="Edit ToDo" />
+                    <input id="edit-todo-button" className="edit-item" type="submit" value="Edit ToDo" />
                 </form>
             </details>
         )
