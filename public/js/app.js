@@ -112,7 +112,7 @@ class App extends React.Component {
         )
     }
     deleteTodo = event => {
-        axios.delete("/todo/" + this.state).then(response => {
+        axios.delete("/todo/" + event.target.value).then(response => {
             this.setState({
                 todos: response.data
             })
@@ -128,8 +128,8 @@ class App extends React.Component {
                 description: "",
                 completed: false
             })
-            document.querySelector('details').open = false
         })
+
     }
     componentDidMount = () => {
         axios.get("/todo").then(response => {
@@ -144,6 +144,11 @@ class App extends React.Component {
     }
 }
 
+$(() => {
+    $("body").on("click", "#edit-todo-button", function () {
+        $("details").removeAttr("open");
+    })
+})
 
 ReactDOM.render(
     <App></App>,
